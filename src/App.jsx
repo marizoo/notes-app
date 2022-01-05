@@ -2,7 +2,8 @@ import React,{ useState} from 'react';
 import NotesList from './components/NotesList';
 import {nanoid} from 'nanoid';
 
-// till min 33:20
+//  till minute 50:48, to delete a note.
+
 
 const App = () => {
   const [notes, setNotes] = useState([
@@ -32,9 +33,22 @@ const App = () => {
     date: "05/03/2022",
     },
 ]);
+
+const addNote = (text) => {
+  const date = new Date();
+  const newNote = {
+    id: nanoid(),
+    text: text,
+    date: date.toLocaleDateString(),
+  }
+
+  const newNotes = [...notes, newNote];
+  setNotes(newNotes);
+}
+
   return (
     <div className='container'>
-      <NotesList notes={notes}/>
+      <NotesList notes={notes} handleAddNote={addNote}/>
     </div>
   )
 }

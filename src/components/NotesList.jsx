@@ -2,13 +2,16 @@ import React from 'react'
 import AddNote from './AddNote'
 import Note from './Note'
 
-const NotesList = ({notes}) => {
+const NotesList = ({notes, handleAddNote}) => {
+
+   
+
     return (
         <div className='notes-list'>
             {notes.map(note => (
                 <Note note={note} key={note.id}/>
             ))}
-           <AddNote />
+           <AddNote handleAddNote={handleAddNote}/>
         </div>
     )
 }
